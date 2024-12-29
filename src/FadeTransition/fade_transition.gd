@@ -6,6 +6,10 @@ signal finished_fade_in()
 
 var fade_tween: Tween
 
+func _ready() -> void:
+	fade_in()
+	Composer.finished_loading.connect(on_finished_loading)
+
 func fade_in() -> void:
 	fade_rect.color = Color(0,0,0,0)
 
@@ -28,6 +32,5 @@ func fade_out() -> void:
 			Composer.clear_load_screen()
 	)
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func on_finished_loading(scene: Node) -> void:
+	fade_out()
