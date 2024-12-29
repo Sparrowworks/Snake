@@ -1,4 +1,6 @@
-[gd_scene format=3 uid="uid://bk00st466njpq"]
+[gd_scene load_steps=2 format=3 uid="uid://bk00st466njpq"]
+
+[ext_resource type="Script" path="res://src/MainMenu/main_menu.gd" id="1_yhfxu"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -7,6 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_yhfxu")
 
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
@@ -62,3 +65,9 @@ custom_minimum_size = Vector2(650, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 96
 text = "Exit"
+
+[connection signal="pressed" from="ButtonBox/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="ButtonBox/HIButton" to="." method="_on_hi_button_pressed"]
+[connection signal="pressed" from="ButtonBox/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="ButtonBox/CreditsButton" to="." method="_on_credits_button_pressed"]
+[connection signal="pressed" from="ButtonBox/ExitButton" to="." method="_on_exit_button_pressed"]

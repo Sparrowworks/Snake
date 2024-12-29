@@ -18,7 +18,7 @@ signal failed_loading(path: String)
 signal updated_loading(path: String, progress: int)
 
 ## Emitted when the scene has finished loading.
-signal finished_loading(scene: Node, data: Dictionary)
+signal finished_loading(scene: Node)
 
 ## Use with loading screens, for scene activation (i.e making scene visible or activating certain game logic).
 @warning_ignore("unused_signal")
@@ -37,6 +37,15 @@ var is_using_subthreads: bool = false
 ## Sets the cache mode of loaded scenes,
 ## refer to [method ResourceLoader.load_threaded_request] for detail.
 var cache_mode: ResourceLoader.CacheMode = ResourceLoader.CACHE_MODE_REUSE
+
+## Time value for the timer responsible for checking the status of loading. Default value is 0.1s.
+## This should not be changed unless absolutely necessary.
+var loading_timer_delay: float = 0.1:
+	set(val):
+		if !has_initialized: await finished_initialising
+
+		loading_timer_delay = val
+		_loading_timer.wait_time = loading_timer_delay
 
 var _is_loading: bool = false
 var _has_loading_screen: bool = false
@@ -115,7 +124,7 @@ func _check_loading_status() -> void:
 			updated_loading.emit(_current_loading_path, int(load_progress[0] * 100))
 		ResourceLoader.THREAD_LOAD_LOADED:
 			_loading_timer.stop()
-			finished_loading.emit(ResourceLoader.load_threaded_get(_current_loading_path).instantiate(), _current_data)
+			finished_loading.emit(ResourceLoader.load_threaded_get(_current_loading_path).instantiate())
 
 func _setup_timer() -> void:
 	_loading_timer = Timer.new()
@@ -128,7 +137,9 @@ func _setup_timer() -> void:
 
 	has_initialized = true
 
-func _on_finished_loading(scene: Node, _transferred_data: Dictionary) -> void:
+func _on_finished_loading(scene: Node) -> void:
+	scene.set_meta("transferred_data", _current_data)
+
 	_root.call_deferred("add_child", scene)
 	get_tree().set_deferred("current_scene", scene)
 

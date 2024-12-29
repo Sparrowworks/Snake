@@ -14,6 +14,11 @@ config/name="Snake"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Composer="*res://src/Composer/Composer.gd"
+Global="*res://src/Global/Global.gd"
+
 [display]
 
 window/size/viewport_width=3840
