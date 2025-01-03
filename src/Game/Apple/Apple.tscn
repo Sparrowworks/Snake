@@ -1,18 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://csw71kcl7xsoj"]
+[gd_scene load_steps=9 format=3 uid="uid://s4l216a8k542"]
 
 [ext_resource type="Texture2D" uid="uid://kj64ls6er0t8" path="res://assets/images/apple.png" id="1_6q22l"]
+[ext_resource type="Texture2D" uid="uid://cpnj18xbyg023" path="res://assets/images/golden-apple.png" id="2_g4rxl"]
 [ext_resource type="Script" path="res://src/Game/Apple/apple.gd" id="2_rshab"]
+[ext_resource type="Texture2D" uid="uid://cfjtacbhn3ww8" path="res://assets/images/rotten-apple.png" id="3_p1psr"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_x358a"]
-size = Vector2(32, 32)
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8kp1w"]
+texture = ExtResource("3_p1psr")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
 
-[node name="Apple" type="Sprite2D"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mdai8"]
 texture = ExtResource("1_6q22l")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6osr2"]
+texture = ExtResource("2_g4rxl")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_enfjx"]
+tile_size = Vector2i(50, 50)
+sources/1 = SubResource("TileSetAtlasSource_mdai8")
+sources/0 = SubResource("TileSetAtlasSource_8kp1w")
+sources/2 = SubResource("TileSetAtlasSource_6osr2")
+
+[node name="Apple" type="TileMapLayer"]
+position = Vector2(0, 200)
+tile_set = SubResource("TileSet_enfjx")
 script = ExtResource("2_rshab")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="NormalTimer" type="Timer" parent="."]
+wait_time = 100.0
+autostart = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_x358a")
+[node name="GoldenTimer" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
 
-[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[node name="RottenTimer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[connection signal="timeout" from="NormalTimer" to="." method="_on_normal_timer_timeout"]
+[connection signal="timeout" from="GoldenTimer" to="." method="_on_golden_timer_timeout"]
+[connection signal="timeout" from="RottenTimer" to="." method="_on_rotten_timer_timeout"]
