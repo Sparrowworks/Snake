@@ -1,8 +1,6 @@
 class_name Snake extends TileMapLayer
 
-signal borders_hit()
 signal body_hit()
-
 signal apple_hit(coord: Vector2i)
 signal rotten_hit()
 
@@ -18,7 +16,7 @@ var current_dir: Vector2i = Vector2i.RIGHT
 func _ready() -> void:
 	current_occupied.append(get_used_cells()[0])
 	apple_tilemap.snake_occupied_cells = current_occupied
-	apple_tilemap.spawn_apple()
+	apple_tilemap.spawn_apple(1)
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("down"):
@@ -53,20 +51,18 @@ func move(direction: Vector2i) -> void:
 		return
 
 	if apple_tilemap.is_apple(new_head):
+		apple_hit.emit(new_head)
+
 		if apple_tilemap.is_rotten(new_head):
 			rotten_hit.emit()
 			return
 
-		apple_hit.emit(new_head)
 		add_body(new_head)
 		return
 
 	set_cell(new_head,0,Vector2i(0,0))
 	current_occupied.insert(0,new_head)
 	set_cell(current_occupied.pop_back())
-
-func check_if_borders(coord: Vector2i) -> bool:
-	return coord.x > 19 or coord.y > 19 or coord.x < 0 or coord.y < 0
 
 func check_if_body(coord: Vector2i) -> bool:
 	return coord in current_occupied
@@ -95,3 +91,4 @@ func game_end() -> void:
 
 func _on_difficulty_timer_timeout() -> void:
 	move_timer.wait_time = clampf(move_timer.wait_time - 0.05, 0.05, 1.0)
+	move_timer.start()

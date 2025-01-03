@@ -27,7 +27,6 @@ wait_time = 20.0
 autostart = true
 
 [connection signal="body_hit" from="." to="." method="game_end"]
-[connection signal="borders_hit" from="." to="." method="game_end"]
 [connection signal="rotten_hit" from="." to="." method="game_end"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
 [connection signal="timeout" from="DifficultyTimer" to="." method="_on_difficulty_timer_timeout"]
