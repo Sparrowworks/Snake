@@ -72,6 +72,13 @@ func check_if_body(coord: Vector2i) -> bool:
 	return coord in current_occupied
 
 func change_dir_manual(new_dir: Vector2i) -> void:
+	if current_occupied.size() > 1:
+		if (new_dir == Vector2i.RIGHT and current_dir == Vector2i.LEFT) or \
+		(new_dir == Vector2i.LEFT and current_dir == Vector2i.RIGHT) or \
+		(new_dir == Vector2i.UP and current_dir == Vector2i.DOWN) or \
+		(new_dir == Vector2i.DOWN and current_dir == Vector2i.UP):
+			return
+
 	move_timer.stop()
 	current_dir = new_dir
 	move(current_dir)
@@ -85,3 +92,6 @@ func game_end() -> void:
 	set_process(false)
 	move_timer.stop()
 	game_over.emit()
+
+func _on_difficulty_timer_timeout() -> void:
+	move_timer.wait_time = clampf(move_timer.wait_time - 0.05, 0.05, 1.0)

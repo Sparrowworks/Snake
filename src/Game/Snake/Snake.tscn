@@ -19,9 +19,15 @@ tile_set = SubResource("TileSet_oq818")
 script = ExtResource("2_t2gq8")
 
 [node name="MoveTimer" type="Timer" parent="."]
+wait_time = 0.85
+autostart = true
+
+[node name="DifficultyTimer" type="Timer" parent="."]
+wait_time = 20.0
 autostart = true
 
 [connection signal="body_hit" from="." to="." method="game_end"]
 [connection signal="borders_hit" from="." to="." method="game_end"]
 [connection signal="rotten_hit" from="." to="." method="game_end"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
+[connection signal="timeout" from="DifficultyTimer" to="." method="_on_difficulty_timer_timeout"]
