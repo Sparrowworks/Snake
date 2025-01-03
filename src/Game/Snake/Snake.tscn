@@ -1,102 +1,17 @@
-[gd_scene load_steps=13 format=3 uid="uid://cc7cmn6qqdmv6"]
+[gd_scene load_steps=4 format=3 uid="uid://c073rwhcnpodn"]
 
-[ext_resource type="Texture2D" uid="uid://dvs8h8r41bru2" path="res://assets/images/head_right.png" id="1_mq7tp"]
-[ext_resource type="Script" path="res://src/Game/Snake/snake.gd" id="1_vdqd3"]
-[ext_resource type="Texture2D" uid="uid://d2dijb6we7qpi" path="res://assets/images/head_down.png" id="2_ou0nn"]
-[ext_resource type="Texture2D" uid="uid://cs8wn3ryu4iet" path="res://assets/images/head_left.png" id="3_qv5bx"]
-[ext_resource type="Texture2D" uid="uid://bhp4q4ah1hlma" path="res://assets/images/head_up.png" id="5_e8wod"]
-[ext_resource type="Texture2D" uid="uid://ynhnbj1pcmsh" path="res://assets/images/tail_down.png" id="6_dkona"]
-[ext_resource type="Texture2D" uid="uid://c1piwg8efgfd6" path="res://assets/images/tail_left.png" id="7_4nvnb"]
-[ext_resource type="Texture2D" uid="uid://ca7j5xqotq0xx" path="res://assets/images/tail_right.png" id="8_lmhy2"]
-[ext_resource type="Texture2D" uid="uid://dhw86gevsm05p" path="res://assets/images/tail_up.png" id="9_o6qa5"]
+[ext_resource type="Texture2D" uid="uid://bp4yrx3hhqypm" path="res://assets/images/snake.png" id="1_3hh26"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_o0qwj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_ou0nn")
-}],
-"loop": true,
-"name": &"down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_qv5bx")
-}],
-"loop": true,
-"name": &"left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_mq7tp")
-}],
-"loop": true,
-"name": &"right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_e8wod")
-}],
-"loop": true,
-"name": &"up",
-"speed": 5.0
-}]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7o718"]
+texture = ExtResource("1_3hh26")
+texture_region_size = Vector2i(50, 50)
+0:0/0 = 0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_52tcq"]
-size = Vector2(24, 48)
+[sub_resource type="TileSet" id="TileSet_oq818"]
+tile_size = Vector2i(50, 50)
+sources/2 = SubResource("TileSetAtlasSource_7o718")
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_7xogj"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_dkona")
-}],
-"loop": true,
-"name": &"down",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("7_4nvnb")
-}],
-"loop": true,
-"name": &"left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("8_lmhy2")
-}],
-"loop": true,
-"name": &"right",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_o6qa5")
-}],
-"loop": true,
-"name": &"up",
-"speed": 5.0
-}]
-
-[node name="Snake" type="Node2D"]
-script = ExtResource("1_vdqd3")
-
-[node name="Head" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_o0qwj")
-animation = &"right"
-
-[node name="Area2D" type="Area2D" parent="Head"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Head/Area2D"]
-position = Vector2(12, 0)
-shape = SubResource("RectangleShape2D_52tcq")
-
-[node name="Tail" type="AnimatedSprite2D" parent="."]
-position = Vector2(-40, 0)
-sprite_frames = SubResource("SpriteFrames_7xogj")
-animation = &"left"
+[node name="Snake" type="TileMapLayer"]
+position = Vector2(0, 200)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0)
+tile_set = SubResource("TileSet_oq818")
