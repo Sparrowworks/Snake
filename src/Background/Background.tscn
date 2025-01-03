@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://hojhgp2tlg3b"]
+
+[ext_resource type="Texture2D" uid="uid://224vv4sesa2v" path="res://assets/images/gameBG.png" id="1_tu78p"]
+
+[node name="Background" type="Parallax2D"]
+repeat_size = Vector2(1000, 1200)
+autoscroll = Vector2(20, 20)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 1.2)
+texture = ExtResource("1_tu78p")
+centered = false
