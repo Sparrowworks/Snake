@@ -21,4 +21,7 @@ script = ExtResource("2_t2gq8")
 [node name="MoveTimer" type="Timer" parent="."]
 autostart = true
 
+[connection signal="body_hit" from="." to="." method="game_end"]
+[connection signal="borders_hit" from="." to="." method="game_end"]
+[connection signal="rotten_hit" from="." to="." method="game_end"]
 [connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
