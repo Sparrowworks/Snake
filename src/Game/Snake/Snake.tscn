@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c073rwhcnpodn"]
+[gd_scene load_steps=5 format=3 uid="uid://c073rwhcnpodn"]
 
 [ext_resource type="Texture2D" uid="uid://bp4yrx3hhqypm" path="res://assets/images/snake.png" id="1_3hh26"]
+[ext_resource type="Script" path="res://src/Game/Snake/Snake.gd" id="2_t2gq8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7o718"]
 texture = ExtResource("1_3hh26")
@@ -15,3 +16,9 @@ sources/2 = SubResource("TileSetAtlasSource_7o718")
 position = Vector2(0, 200)
 tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_oq818")
+script = ExtResource("2_t2gq8")
+
+[node name="MoveTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="MoveTimer" to="." method="_on_move_timer_timeout"]
