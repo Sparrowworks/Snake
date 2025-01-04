@@ -1,7 +1,7 @@
 # Snake
 A clone of the classic Snake game made in Godot
 
-Play the game here: 
+Play the game here: https://sp4r0w.itch.io/snake
 
 ### About
 -------------
@@ -19,4 +19,4 @@ You're free to modify the project as you wish.
 Credits are listed in the Help menu. <br>
 Thanks to Varga for testing. <br>
 
-Play the game here: 
+Play the game here: https://sp4r0w.itch.io/snake
