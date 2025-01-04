@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://cpnj18xbyg023" path="res://assets/images/golden-apple.png" id="2_g4rxl"]
 [ext_resource type="Script" path="res://src/Game/Apple/apple.gd" id="2_rshab"]
 [ext_resource type="Texture2D" uid="uid://cfjtacbhn3ww8" path="res://assets/images/rotten-apple.png" id="3_p1psr"]
-[ext_resource type="AudioStream" uid="uid://bso4l642svxbo" path="res://assets/audio/Pickup Soft.ogg" id="5_0nv4a"]
-[ext_resource type="AudioStream" uid="uid://b8mny5x5vrv7o" path="res://assets/audio/Pickup Magic.ogg" id="6_cm8x5"]
+[ext_resource type="AudioStream" uid="uid://bso4l642svxbo" path="res://assets/audio/pickupNormal.ogg" id="5_0nv4a"]
+[ext_resource type="AudioStream" uid="uid://b8mny5x5vrv7o" path="res://assets/audio/pickupGolden.ogg" id="6_cm8x5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8kp1w"]
 texture = ExtResource("3_p1psr")

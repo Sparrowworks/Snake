@@ -20,7 +20,14 @@ var time: int = 0:
 
 var is_game_over: bool = false
 
+func _ready() -> void:
+	hi_label.text = "HI Score: " + str(Global.hi_score)
+	%GameTheme.play()
+
 func show_game_over() -> void:
+	if Global.is_new_high_score(score):
+		%NewScore.show()
+
 	game_over_panel.show()
 	game_over_panel.modulate = Color.TRANSPARENT
 	var game_over_tween: Tween = get_tree().create_tween()
@@ -45,10 +52,15 @@ func _process(delta: float) -> void:
 		Global.go_to("res://src/Game/Game.tscn")
 
 	if Input.is_action_just_pressed("mute"):
-		pass
+		if %GameTheme.playing:
+			%GameTheme.stop()
+		else:
+			%GameTheme.play()
 
 func _on_snake_game_over() -> void:
 	if is_game_over: return
+
+	%GameTheme.stop()
 
 	is_game_over = true
 	set_process(false)

@@ -1,7 +1,10 @@
 extends Control
 
+func _ready() -> void:
+	Global.play_menu_theme()
 
 func _on_play_button_pressed() -> void:
+	Global.stop_menu_theme()
 	Global.go_to("res://src/Game/Game.tscn")
 
 func _on_settings_button_pressed() -> void:

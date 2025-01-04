@@ -47,13 +47,15 @@ var loading_timer_delay: float = 0.1:
 		loading_timer_delay = val
 		_loading_timer.wait_time = loading_timer_delay
 
+## Changes the default place where Composer adds scenes (default is get_tree().root).
+var root: Node
+
 var _is_loading: bool = false
 var _has_loading_screen: bool = false
 
 var _loading_timer: Timer = null
 var _current_loading_path: String = ""
 var _current_load_screen: Node = null
-var _root: Node
 
 var _current_data: Dictionary = {}
 
@@ -62,7 +64,7 @@ func _enter_tree() -> void:
 	failed_loading.connect(_on_failed_loading)
 	finished_loading.connect(_on_finished_loading)
 
-	_root = get_tree().root
+	root = get_tree().root
 	_setup_timer()
 
 ## Replaces the current scene with a new scene using a path,
@@ -96,8 +98,8 @@ func setup_load_screen(path_to_load_screen: String) -> Node:
 	_has_loading_screen = true
 	_current_load_screen = load(path_to_load_screen).instantiate()
 
-	_root.call_deferred("add_child",_current_load_screen)
-	_root.call_deferred("move_child",_current_load_screen, get_child_count()-1)
+	root.call_deferred("add_child",_current_load_screen)
+	root.call_deferred("move_child",_current_load_screen, get_child_count()-1)
 
 	return _current_load_screen
 
@@ -131,7 +133,7 @@ func _setup_timer() -> void:
 	_loading_timer.name = "LoadingTimer"
 	_loading_timer.wait_time = 0.1
 	_loading_timer.timeout.connect(_check_loading_status)
-	_root.call_deferred("add_child",_loading_timer)
+	root.call_deferred("add_child",_loading_timer)
 
 	await _loading_timer.ready
 
@@ -140,7 +142,7 @@ func _setup_timer() -> void:
 func _on_finished_loading(scene: Node) -> void:
 	scene.set_meta("transferred_data", _current_data)
 
-	_root.call_deferred("add_child", scene)
+	root.call_deferred("add_child", scene)
 	get_tree().set_deferred("current_scene", scene)
 
 	_current_loading_path = ""
