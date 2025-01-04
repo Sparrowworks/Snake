@@ -69,7 +69,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_4eicg")
 theme_override_font_sizes/font_size = 24
-text = "Score: 0"
+text = "Score  0"
 horizontal_alignment = 1
 
 [node name="HiLabel" type="Label" parent="UI/Control/Panel/HBoxContainer/VBoxContainer"]
@@ -78,7 +78,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_4eicg")
 theme_override_font_sizes/font_size = 24
-text = "HI Score: 0"
+text = "HI Score  0"
 horizontal_alignment = 1
 
 [node name="TimeLabel" type="Label" parent="UI/Control/Panel/HBoxContainer/VBoxContainer"]
@@ -87,7 +87,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_4eicg")
 theme_override_font_sizes/font_size = 24
-text = "Time: 0"
+text = "Time  0"
 horizontal_alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="UI/Control/Panel/HBoxContainer"]
@@ -102,7 +102,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_4eicg")
 theme_override_font_sizes/font_size = 24
-text = "R - Restart"
+text = "R  Restart"
 horizontal_alignment = 1
 
 [node name="Help2" type="Label" parent="UI/Control/Panel/HBoxContainer/VBoxContainer2"]
@@ -110,7 +110,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_4eicg")
 theme_override_font_sizes/font_size = 24
-text = "Q - Quit"
+text = "Q   Quit"
 horizontal_alignment = 1
 
 [node name="Help3" type="Label" parent="UI/Control/Panel/HBoxContainer/VBoxContainer2"]
@@ -118,7 +118,7 @@ custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_4eicg")
 theme_override_font_sizes/font_size = 24
-text = "M - Mute"
+text = "M   Mute"
 horizontal_alignment = 1
 
 [node name="GameOverPanel" type="TextureRect" parent="UI/Control"]

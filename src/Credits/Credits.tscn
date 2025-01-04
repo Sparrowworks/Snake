@@ -53,16 +53,16 @@ layout_mode = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_j0k8h")
 theme_override_font_sizes/font_size = 48
-text = "Controls:
-WASD or Arrow Keys - 
-Move
-R - Restart
-Q - Leave
-M - Mute/Unmute Music
+text = "Controls
+Use WASD or Arrows 
+to Move
+R to Restart
+Q to Leave
+M to Mute/Unmute Music
 
-Credits:
-SP4R0W - Coding
-Varga - Testing
+Credits
+SP4R0W as Coder
+Varga as Tester
 
 Art by Kenney
 Apples by FlatIcon"
