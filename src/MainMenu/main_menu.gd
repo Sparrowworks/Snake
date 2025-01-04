@@ -3,6 +3,9 @@ extends Control
 func _ready() -> void:
 	Global.play_menu_theme()
 
+	if OS.get_name() == "Web":
+		$ButtonBox/ExitButton.hide()
+
 func _on_play_button_pressed() -> void:
 	Global.stop_menu_theme()
 	Global.go_to("res://src/Game/Game.tscn")
