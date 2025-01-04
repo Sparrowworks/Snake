@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bso4l642svxbo"
+path="res://.godot/imported/Pickup Soft.ogg-a2edd5957e74f9010e6822d7ff7901ee.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/Pickup Soft.ogg"
+dest_files=["res://.godot/imported/Pickup Soft.ogg-a2edd5957e74f9010e6822d7ff7901ee.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

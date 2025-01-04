@@ -51,9 +51,21 @@ func _on_snake_apple_hit(coord: Vector2i) -> void:
 	if get_cell_source_id(coord) == 1:
 		score_increased.emit(1)
 		spawn_apple(1)
+		$PickupNormal.play()
 	elif get_cell_source_id(coord) == 2:
 		score_increased.emit(3)
 		golden_timer.wait_time = clampi(golden_timer.wait_time - 2,10,20)
 		golden_timer.start()
+		$PickupGolden.play()
 
 	set_cell(coord)
+
+
+func _on_snake_game_over() -> void:
+	normal_timer.stop()
+	golden_timer.stop()
+	rotten_timer.stop()
+
+	var apple_tween: Tween = get_tree().create_tween()
+	apple_tween.tween_property(self,"modulate:a",0.0,1.0)
+	apple_tween.tween_callback(apple_tween.kill)

@@ -1,23 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://byq6te8x2cgls"]
+[gd_scene load_steps=9 format=3 uid="uid://byq6te8x2cgls"]
 
 [ext_resource type="Script" path="res://src/Game/Game.gd" id="1_62xe8"]
 [ext_resource type="Texture2D" uid="uid://224vv4sesa2v" path="res://assets/images/gameBG.png" id="2_vicne"]
 [ext_resource type="PackedScene" uid="uid://c073rwhcnpodn" path="res://src/Game/Snake/Snake.tscn" id="3_mne51"]
 [ext_resource type="PackedScene" uid="uid://s4l216a8k542" path="res://src/Game/Apple/Apple.tscn" id="4_kun0h"]
 [ext_resource type="FontFile" uid="uid://brsbkqea30ixk" path="res://assets/fonts/Kenney Bold.ttf" id="5_4eicg"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_x8i8o"]
-bg_color = Color(0.106763, 0.539106, 0.954365, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-border_blend = true
-corner_radius_top_left = 25
-corner_radius_top_right = 25
-corner_radius_bottom_right = 25
-corner_radius_bottom_left = 25
+[ext_resource type="Texture2D" uid="uid://cc6usmrr128jq" path="res://assets/images/BG.png" id="5_4mayo"]
+[ext_resource type="Texture2D" uid="uid://bd8dhh6gsvig3" path="res://assets/images/blueBtnTapped.png" id="7_mdt6g"]
+[ext_resource type="AudioStream" uid="uid://cse0sqokbycu7" path="res://assets/audio/Negative.ogg" id="8_3edra"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_62xe8")
@@ -47,50 +37,161 @@ grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_lock_ = true
 
-[node name="Panel" type="Panel" parent="UI/Control"]
+[node name="Panel" type="TextureRect" parent="UI/Control"]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 200.0
 grow_horizontal = 2
-theme_override_styles/panel = SubResource("StyleBoxFlat_x8i8o")
+texture = ExtResource("5_4mayo")
+expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/Panel"]
+custom_minimum_size = Vector2(1000, 200)
+layout_mode = 0
+offset_right = 426.0
+offset_bottom = 200.0
+theme_override_constants/separation = 100
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+
+[node name="ScoreLabel" type="Label" parent="UI/Control/Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_4eicg")
+theme_override_font_sizes/font_size = 24
+text = "Score: 0"
+horizontal_alignment = 1
+
+[node name="HiLabel" type="Label" parent="UI/Control/Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_4eicg")
+theme_override_font_sizes/font_size = 24
+text = "HI Score: 0"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="UI/Control/Panel/HBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_4eicg")
+theme_override_font_sizes/font_size = 24
+text = "Time: 0"
+horizontal_alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/Control/Panel/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+
+[node name="Help1" type="Label" parent="UI/Control/Panel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_4eicg")
+theme_override_font_sizes/font_size = 24
+text = "R - Restart"
+horizontal_alignment = 1
+
+[node name="Help2" type="Label" parent="UI/Control/Panel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_4eicg")
+theme_override_font_sizes/font_size = 24
+text = "Q - Quit"
+horizontal_alignment = 1
+
+[node name="Help3" type="Label" parent="UI/Control/Panel/HBoxContainer/VBoxContainer2"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_4eicg")
+theme_override_font_sizes/font_size = 24
+text = "M - Mute"
+horizontal_alignment = 1
+
+[node name="GameOverPanel" type="TextureRect" parent="UI/Control"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -30.5
-offset_top = -25.0
-offset_right = 30.5
-offset_bottom = 25.0
+offset_left = -128.0
+offset_top = -128.0
+offset_right = 128.0
+offset_bottom = 128.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_mdt6g")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/GameOverPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -234.5
+offset_top = -161.0
+offset_right = 234.5
+offset_bottom = 161.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
 
-[node name="ScoreLabel" type="Label" parent="UI/Control/Panel/VBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
+[node name="Title" type="Label" parent="UI/Control/GameOverPanel/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_4eicg")
-theme_override_font_sizes/font_size = 32
-text = "Score: 0"
+theme_override_font_sizes/font_size = 48
+text = "Game Over!"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TimeLabel" type="Label" parent="UI/Control/Panel/VBoxContainer"]
+[node name="NewScore" type="Label" parent="UI/Control/GameOverPanel/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(469, 0)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_4eicg")
-theme_override_font_sizes/font_size = 32
-text = "Time: 0"
+theme_override_font_sizes/font_size = 24
+text = "You set a new high score!"
 horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Instructions" type="Label" parent="UI/Control/GameOverPanel/VBoxContainer"]
+custom_minimum_size = Vector2(469, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("5_4eicg")
+theme_override_font_sizes/font_size = 24
+text = "Hit 'R' To restart
+Or Hit 'q' To quit"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="GameOver" type="AudioStreamPlayer2D" parent="Audio"]
+unique_name_in_owner = true
+stream = ExtResource("8_3edra")
+bus = &"SFX"
 
 [connection signal="apple_hit" from="Snake" to="." method="_on_snake_apple_hit"]
 [connection signal="apple_hit" from="Snake" to="Apple" method="_on_snake_apple_hit"]
 [connection signal="game_over" from="Snake" to="." method="_on_snake_game_over"]
+[connection signal="game_over" from="Snake" to="Apple" method="_on_snake_game_over"]
 [connection signal="score_increased" from="Apple" to="." method="_on_apple_score_increased"]
 [connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]

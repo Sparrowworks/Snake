@@ -91,7 +91,7 @@ func load_scene(path_to_scene: String, data_to_transfer: Dictionary = {}) -> voi
 ## Creates a loading screen using a path and adds it to the SceneTree.
 ## Returns an instance of it for usage with signals.
 func setup_load_screen(path_to_load_screen: String) -> Node:
-	if _has_loading_screen: return
+	if _has_loading_screen: return null
 
 	_has_loading_screen = true
 	_current_load_screen = load(path_to_load_screen).instantiate()

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b8mny5x5vrv7o"
+path="res://.godot/imported/Pickup Magic.ogg-b0f618950740cf564beef5ed6ffa3fd3.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/Pickup Magic.ogg"
+dest_files=["res://.godot/imported/Pickup Magic.ogg-b0f618950740cf564beef5ed6ffa3fd3.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

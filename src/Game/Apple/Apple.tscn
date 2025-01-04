@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://s4l216a8k542"]
+[gd_scene load_steps=11 format=3 uid="uid://s4l216a8k542"]
 
 [ext_resource type="Texture2D" uid="uid://kj64ls6er0t8" path="res://assets/images/apple.png" id="1_6q22l"]
 [ext_resource type="Texture2D" uid="uid://cpnj18xbyg023" path="res://assets/images/golden-apple.png" id="2_g4rxl"]
 [ext_resource type="Script" path="res://src/Game/Apple/apple.gd" id="2_rshab"]
 [ext_resource type="Texture2D" uid="uid://cfjtacbhn3ww8" path="res://assets/images/rotten-apple.png" id="3_p1psr"]
+[ext_resource type="AudioStream" uid="uid://bso4l642svxbo" path="res://assets/audio/Pickup Soft.ogg" id="5_0nv4a"]
+[ext_resource type="AudioStream" uid="uid://b8mny5x5vrv7o" path="res://assets/audio/Pickup Magic.ogg" id="6_cm8x5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8kp1w"]
 texture = ExtResource("3_p1psr")
@@ -43,6 +45,14 @@ autostart = true
 [node name="RottenTimer" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
+
+[node name="PickupNormal" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_0nv4a")
+bus = &"SFX"
+
+[node name="PickupGolden" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_cm8x5")
+bus = &"SFX"
 
 [connection signal="timeout" from="NormalTimer" to="." method="_on_normal_timer_timeout"]
 [connection signal="timeout" from="GoldenTimer" to="." method="_on_golden_timer_timeout"]
