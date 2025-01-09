@@ -51,11 +51,13 @@ func move(direction: Vector2i) -> void:
 		return
 
 	if apple_tilemap.is_apple(new_head):
-		apple_hit.emit(new_head)
-
 		if apple_tilemap.is_rotten(new_head):
+			apple_hit.emit(new_head)
 			rotten_hit.emit()
 			return
+
+		print("Add")
+		apple_hit.emit(new_head)
 
 		add_body(new_head)
 		return

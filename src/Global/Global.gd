@@ -5,8 +5,8 @@ extends Node
 @onready var music_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
 @onready var click_player: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
 
-@onready var click_sound: AudioStream = load("res://assets/audio/click.ogg")
-@onready var menu_theme: AudioStream = load("res://assets/audio/menuTheme.ogg")
+@onready var click_sound: AudioStream = load("res://assets/audio/click.mp3")
+@onready var menu_theme: AudioStream = load("res://assets/audio/menuTheme.mp3")
 
 const MOVEMENT_SIZE = 64
 const MAX_X = 19

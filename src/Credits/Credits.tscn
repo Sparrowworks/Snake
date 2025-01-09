@@ -48,6 +48,7 @@ theme_override_constants/separation = 50
 [node name="ScrollContainer" type="ScrollContainer" parent="ButtonBox"]
 custom_minimum_size = Vector2(850, 700)
 layout_mode = 2
+horizontal_scroll_mode = 0
 
 [node name="HelpLabel" type="Label" parent="ButtonBox/ScrollContainer"]
 layout_mode = 2
@@ -58,7 +59,8 @@ Use WASD or Arrows
 to Move
 R to Restart
 Q to Leave
-M to Mute/Unmute Music
+M to Mute or Unmute 
+Music
 
 Credits
 SP4R0W as Coder

@@ -55,7 +55,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_alh7i")
 theme_override_font_sizes/font_size = 36
-text = "Music Volume: 100"
+text = "Music Volume  100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -75,7 +75,7 @@ unique_name_in_owner = true
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_alh7i")
 theme_override_font_sizes/font_size = 36
-text = "SFX Volume: 100"
+text = "SFX Volume  100"
 horizontal_alignment = 1
 vertical_alignment = 1
 

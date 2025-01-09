@@ -10,18 +10,18 @@ extends Node2D
 var score: int = 0:
 	set(val):
 		score = val
-		score_label.text = "Score: " + str(score)
+		score_label.text = "Score  " + str(score)
 
 
 var time: int = 0:
 	set(val):
 		time = val
-		time_label.text = "Time: " + str(time)
+		time_label.text = "Time  " + str(time)
 
 var is_game_over: bool = false
 
 func _ready() -> void:
-	hi_label.text = "HI Score: " + str(Global.hi_score)
+	hi_label.text = "HI Score  " + str(Global.hi_score)
 	%GameTheme.play()
 
 func show_game_over() -> void:

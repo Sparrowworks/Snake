@@ -3,19 +3,20 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://e1mxdr6qd3ac"
-path="res://.godot/imported/icon_circle.png-f02b6be63d1659b82d2f06cc3d4a2e99.ctex"
+path.s3tc="res://.godot/imported/icon_circle.png-f02b6be63d1659b82d2f06cc3d4a2e99.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/images/icon_circle.png"
-dest_files=["res://.godot/imported/icon_circle.png-f02b6be63d1659b82d2f06cc3d4a2e99.ctex"]
+dest_files=["res://.godot/imported/icon_circle.png-f02b6be63d1659b82d2f06cc3d4a2e99.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -28,7 +29,7 @@ roughness/src_normal=""
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false
-process/hdr_as_srgb=false
+process/hdr_as_srgb=true
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1

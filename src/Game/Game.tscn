@@ -7,8 +7,8 @@
 [ext_resource type="FontFile" uid="uid://brsbkqea30ixk" path="res://assets/fonts/Kenney Bold.ttf" id="5_4eicg"]
 [ext_resource type="Texture2D" uid="uid://cc6usmrr128jq" path="res://assets/images/BG.png" id="5_4mayo"]
 [ext_resource type="Texture2D" uid="uid://bd8dhh6gsvig3" path="res://assets/images/blueBtnTapped.png" id="7_mdt6g"]
-[ext_resource type="AudioStream" uid="uid://cse0sqokbycu7" path="res://assets/audio/gameOver.ogg" id="8_3edra"]
-[ext_resource type="AudioStream" uid="uid://8rl730toq3c2" path="res://assets/audio/gameTheme.ogg" id="9_8kc8m"]
+[ext_resource type="AudioStream" uid="uid://bjiamstei38q5" path="res://assets/audio/gameOver.mp3" id="8_m0hqv"]
+[ext_resource type="AudioStream" uid="uid://dg50le446esxw" path="res://assets/audio/gameTheme.mp3" id="9_hehav"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_62xe8")
@@ -188,12 +188,12 @@ autowrap_mode = 2
 
 [node name="GameOver" type="AudioStreamPlayer2D" parent="Audio"]
 unique_name_in_owner = true
-stream = ExtResource("8_3edra")
+stream = ExtResource("8_m0hqv")
 bus = &"SFX"
 
 [node name="GameTheme" type="AudioStreamPlayer2D" parent="Audio"]
 unique_name_in_owner = true
-stream = ExtResource("9_8kc8m")
+stream = ExtResource("9_hehav")
 bus = &"Music"
 
 [connection signal="apple_hit" from="Snake" to="." method="_on_snake_apple_hit"]
