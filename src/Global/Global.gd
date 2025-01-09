@@ -16,6 +16,8 @@ var music_volume: float = 100.0
 var sfx_volume: float = 100.0
 var hi_score: int = 0
 
+var music_tween: Tween
+
 func _ready() -> void:
 	get_tree().root.call_deferred("add_child",click_player)
 	get_tree().root.call_deferred("add_child",music_player)
@@ -41,7 +43,9 @@ func play_menu_theme() -> void:
 	music_player.play()
 
 func stop_menu_theme() -> void:
-	var music_tween: Tween = get_tree().create_tween()
+	if music_tween != null: return
+
+	music_tween = get_tree().create_tween()
 	music_tween.tween_property(music_player,"volume_db",linear_to_db(0),1.0)
 	music_tween.tween_callback(
 		func() -> void:
