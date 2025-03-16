@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://3bahxcre56li"]
 
-[ext_resource type="Script" path="res://src/FadeTransition/fade_transition.gd" id="1_8pgrq"]
+[ext_resource type="Script" uid="uid://c5sbyoi213a4s" path="res://src/FadeTransition/fade_transition.gd" id="1_8pgrq"]
 
 [node name="FadeTransition" type="CanvasLayer"]
 layer = 100

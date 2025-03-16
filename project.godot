@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="Snake"
+config/version="1.0.0.0"
 run/main_scene="res://src/MainMenu/MainMenu.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
+boot_splash/image="uid://bp3vl4hat46sx"
 config/icon="res://icon.svg"
 
 [autoload]

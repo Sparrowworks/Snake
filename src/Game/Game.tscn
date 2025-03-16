@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://byq6te8x2cgls"]
 
-[ext_resource type="Script" path="res://src/Game/Game.gd" id="1_62xe8"]
+[ext_resource type="Script" uid="uid://xt4r8pvo1y6d" path="res://src/Game/Game.gd" id="1_62xe8"]
 [ext_resource type="Texture2D" uid="uid://224vv4sesa2v" path="res://assets/images/gameBG.png" id="2_vicne"]
 [ext_resource type="PackedScene" uid="uid://c073rwhcnpodn" path="res://src/Game/Snake/Snake.tscn" id="3_mne51"]
 [ext_resource type="PackedScene" uid="uid://s4l216a8k542" path="res://src/Game/Apple/Apple.tscn" id="4_kun0h"]

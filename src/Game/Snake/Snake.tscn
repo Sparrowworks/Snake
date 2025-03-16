@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c073rwhcnpodn"]
 
 [ext_resource type="Texture2D" uid="uid://bp4yrx3hhqypm" path="res://assets/images/snake.png" id="1_3hh26"]
-[ext_resource type="Script" path="res://src/Game/Snake/Snake.gd" id="2_t2gq8"]
+[ext_resource type="Script" uid="uid://bdfyg7sn0u2uw" path="res://src/Game/Snake/Snake.gd" id="2_t2gq8"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7o718"]
 texture = ExtResource("1_3hh26")

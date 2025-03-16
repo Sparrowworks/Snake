@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://kj64ls6er0t8" path="res://assets/images/apple.png" id="1_6q22l"]
 [ext_resource type="Texture2D" uid="uid://cpnj18xbyg023" path="res://assets/images/golden-apple.png" id="2_g4rxl"]
-[ext_resource type="Script" path="res://src/Game/Apple/apple.gd" id="2_rshab"]
+[ext_resource type="Script" uid="uid://cr183uaff72c3" path="res://src/Game/Apple/apple.gd" id="2_rshab"]
 [ext_resource type="Texture2D" uid="uid://cfjtacbhn3ww8" path="res://assets/images/rotten-apple.png" id="3_p1psr"]
 [ext_resource type="AudioStream" uid="uid://ckl8yo8mc4w4v" path="res://assets/audio/pickupNormal.mp3" id="5_b3vsg"]
 [ext_resource type="AudioStream" uid="uid://u0nyn4pm0sf3" path="res://assets/audio/pickupGolden.mp3" id="6_8kayv"]
@@ -43,7 +43,7 @@ one_shot = true
 autostart = true
 
 [node name="RottenTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 30.0
 autostart = true
 
 [node name="PickupNormal" type="AudioStreamPlayer2D" parent="."]

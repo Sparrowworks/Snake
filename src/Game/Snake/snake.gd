@@ -56,7 +56,6 @@ func move(direction: Vector2i) -> void:
 			rotten_hit.emit()
 			return
 
-		print("Add")
 		apple_hit.emit(new_head)
 
 		add_body(new_head)
@@ -87,8 +86,9 @@ func add_body(coord: Vector2i) -> void:
 	set_cell(coord, 0, Vector2i(0,0))
 
 func game_end() -> void:
-	set_process(false)
+	process_mode = PROCESS_MODE_DISABLED
 	move_timer.stop()
+	$DifficultyTimer.stop()
 	game_over.emit()
 
 func _on_difficulty_timer_timeout() -> void:

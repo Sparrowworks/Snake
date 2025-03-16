@@ -43,8 +43,6 @@ func play_menu_theme() -> void:
 	music_player.play()
 
 func stop_menu_theme() -> void:
-	if music_tween != null: return
-
 	music_tween = get_tree().create_tween()
 	music_tween.tween_property(music_player,"volume_db",linear_to_db(0),1.0)
 	music_tween.tween_callback(
