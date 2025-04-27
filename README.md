@@ -17,3 +17,6 @@ You're free to modify the project as you wish.
 ### Installation
 - This game is playable on the [Itch](https://sp4r0w.itch.io/snake) page.
 - You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) or download the repository and play it through Godot Editor.
+
+### Screenshots
+<img src="https://img.itch.zone/aW1hZ2UvMzIyMTc1Mi8yMDkyNDU0OC5wbmc=/original/QaxayV.png">
