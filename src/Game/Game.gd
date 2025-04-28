@@ -10,26 +10,29 @@ extends Node2D
 var score: int = 0:
 	set(val):
 		score = val
-		score_label.text = "Score  " + str(score)
-
+		score_label.text = "Score: " + str(score) # Update the label on variable change
 
 var time: int = 0:
 	set(val):
 		time = val
-		time_label.text = "Time  " + str(time)
+		time_label.text = "Time: " + str(time) # Update the label on variable change
 
 var is_game_over: bool = false
 
 func _ready() -> void:
-	hi_label.text = "HI Score  " + str(Global.hi_score)
+	# Show the previous high score
+	hi_label.text = "HI Score: " + str(Global.hi_score)
 	%GameTheme.play()
 
 func show_game_over() -> void:
+	# If we get a new high score, show an appropriate message
 	if Global.is_new_high_score(score):
 		%NewScore.show()
 
+	# Show the game over panel
 	game_over_panel.show()
 	game_over_panel.modulate = Color.TRANSPARENT
+
 	var game_over_tween: Tween = get_tree().create_tween()
 	game_over_tween.tween_property(game_over_panel,"modulate:a",1.0,1.5)
 	game_over_tween.tween_callback(

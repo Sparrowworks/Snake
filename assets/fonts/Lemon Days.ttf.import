@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://cm8gqi6um20dq"
-path="res://.godot/imported/Kenney Future.ttf-845b8d86f13614effd75cae8b9fe56b9.fontdata"
+uid="uid://b7pe7jy61wrbo"
+path="res://.godot/imported/Lemon Days.ttf-739f1ba2f0086519c439783b57e4922f.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Kenney Future.ttf"
-dest_files=["res://.godot/imported/Kenney Future.ttf-845b8d86f13614effd75cae8b9fe56b9.fontdata"]
+source_file="res://assets/fonts/Lemon Days.ttf"
+dest_files=["res://.godot/imported/Lemon Days.ttf-739f1ba2f0086519c439783b57e4922f.fontdata"]
 
 [params]
 
@@ -22,7 +22,8 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
-subpixel_positioning=1
+subpixel_positioning=4
+keep_rounding_remainders=true
 oversampling=0.0
 Fallbacks=null
 fallbacks=[]
