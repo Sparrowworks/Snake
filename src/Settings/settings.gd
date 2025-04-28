@@ -10,7 +10,7 @@ func _ready() -> void:
 	_update_settings()
 
 func _update_settings() -> void:
-	# Set proper text and slider values
+	# Displays user's changes to music and SFX volumes using slider values
 	music_label.text = "Music Volume: " + str(int(Global.music_volume))
 	sfx_label.text = "SFX Volume: " + str(int(Global.sfx_volume))
 
