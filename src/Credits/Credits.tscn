@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cdbcctj2nvae4" path="res://src/Credits/credits.gd" id="1_84gq3"]
 [ext_resource type="PackedScene" uid="uid://hojhgp2tlg3b" path="res://src/Background/Background.tscn" id="1_otq6c"]
-[ext_resource type="FontFile" uid="uid://brsbkqea30ixk" path="res://assets/fonts/Kenney Bold.ttf" id="2_j0k8h"]
+[ext_resource type="FontFile" uid="uid://b7pe7jy61wrbo" path="res://assets/fonts/Lemon Days.ttf" id="3_4ims8"]
 [ext_resource type="Texture2D" uid="uid://bsvwqhjqq87h4" path="res://assets/images/button_rectangle_depth_flat.png" id="3_ykn3v"]
 [ext_resource type="Texture2D" uid="uid://b7fw521n0ulr1" path="res://assets/images/button_rectangle_depth_gloss.png" id="4_txx7l"]
 [ext_resource type="Texture2D" uid="uid://3g3hxxbr0cm8" path="res://assets/images/button_rectangle_depth_gradient.png" id="5_tu1fy"]
@@ -24,8 +24,8 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 263.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("2_j0k8h")
-theme_override_font_sizes/font_size = 112
+theme_override_fonts/font = ExtResource("3_4ims8")
+theme_override_font_sizes/font_size = 192
 text = "Help"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -44,16 +44,21 @@ offset_bottom = 527.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
+alignment = 1
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ButtonBox"]
 custom_minimum_size = Vector2(850, 700)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 horizontal_scroll_mode = 0
 
 [node name="HelpLabel" type="Label" parent="ButtonBox/ScrollContainer"]
+custom_minimum_size = Vector2(850, 700)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_j0k8h")
-theme_override_font_sizes/font_size = 48
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_4ims8")
+theme_override_font_sizes/font_size = 64
 text = "Controls
 Use WASD or Arrows 
 to Move
@@ -64,7 +69,7 @@ Music
 
 Credits
 SP4R0W as Coder
-Varga as Tester
+VargaDot as Tester
 
 Art by Kenney
 Apples by FlatIcon"
@@ -85,8 +90,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_j0k8h")
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("3_4ims8")
+theme_override_font_sizes/font_size = 72
 text = "Back"
 horizontal_alignment = 1
 vertical_alignment = 1

@@ -1,20 +1,50 @@
-[gd_scene load_steps=5 format=3 uid="uid://c073rwhcnpodn"]
+[gd_scene load_steps=9 format=3 uid="uid://c073rwhcnpodn"]
 
 [ext_resource type="Texture2D" uid="uid://bp4yrx3hhqypm" path="res://assets/images/snake.png" id="1_3hh26"]
+[ext_resource type="Texture2D" uid="uid://c1jdxdgvc8gqj" path="res://assets/images/head.png" id="2_o2fng"]
 [ext_resource type="Script" uid="uid://bdfyg7sn0u2uw" path="res://src/Game/Snake/Snake.gd" id="2_t2gq8"]
+[ext_resource type="Texture2D" uid="uid://cspg1viabgp3l" path="res://assets/images/tail.png" id="3_ynvn1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7o718"]
 texture = ExtResource("1_3hh26")
 texture_region_size = Vector2i(50, 50)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ynvn1"]
+texture = ExtResource("2_o2fng")
+texture_region_size = Vector2i(50, 50)
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_v = true
+0:0/2 = 2
+0:0/2/transpose = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/transpose = true
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jqn80"]
+texture = ExtResource("3_ynvn1")
+texture_region_size = Vector2i(50, 50)
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/flip_v = true
+0:0/2 = 2
+0:0/2/transpose = true
+0:0/3 = 3
+0:0/3/flip_h = true
+0:0/3/transpose = true
+
 [sub_resource type="TileSet" id="TileSet_oq818"]
 tile_size = Vector2i(50, 50)
 sources/0 = SubResource("TileSetAtlasSource_7o718")
+sources/1 = SubResource("TileSetAtlasSource_ynvn1")
+sources/2 = SubResource("TileSetAtlasSource_jqn80")
 
 [node name="Snake" type="TileMapLayer"]
 position = Vector2(0, 200)
-tile_map_data = PackedByteArray(0, 0, 0, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0)
+tile_map_data = PackedByteArray(0, 0, 9, 0, 8, 0, 1, 0, 0, 0, 0, 0, 0, 0, 9, 0, 9, 0, 2, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_oq818")
 script = ExtResource("2_t2gq8")
 

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ch4bb2auw86k" path="res://src/MainMenu/main_menu.gd" id="1_yhfxu"]
 [ext_resource type="PackedScene" uid="uid://hojhgp2tlg3b" path="res://src/Background/Background.tscn" id="2_h5q4a"]
-[ext_resource type="FontFile" uid="uid://brsbkqea30ixk" path="res://assets/fonts/Kenney Bold.ttf" id="3_0t5ke"]
+[ext_resource type="FontFile" uid="uid://b7pe7jy61wrbo" path="res://assets/fonts/Lemon Days.ttf" id="3_vuisw"]
 [ext_resource type="Texture2D" uid="uid://bsvwqhjqq87h4" path="res://assets/images/button_rectangle_depth_flat.png" id="4_05ole"]
 [ext_resource type="Texture2D" uid="uid://3g3hxxbr0cm8" path="res://assets/images/button_rectangle_depth_gradient.png" id="4_xf1ed"]
 [ext_resource type="Texture2D" uid="uid://b7fw521n0ulr1" path="res://assets/images/button_rectangle_depth_gloss.png" id="5_we6kd"]
@@ -24,24 +24,28 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 263.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_0t5ke")
-theme_override_font_sizes/font_size = 112
+theme_override_fonts/font = ExtResource("3_vuisw")
+theme_override_font_sizes/font_size = 192
 text = "SNAKE"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="VersionText" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -150.0
-offset_top = -36.0
+offset_left = -85.0
+offset_top = -40.0
 grow_horizontal = 0
 grow_vertical = 0
-theme_override_fonts/font = ExtResource("3_0t5ke")
+theme_override_constants/margin_right = 5
+
+[node name="VersionText" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_vuisw")
 theme_override_font_sizes/font_size = 24
 text = "v1.0.0.0"
 horizontal_alignment = 2
@@ -76,8 +80,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_0t5ke")
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("3_vuisw")
+theme_override_font_sizes/font_size = 72
 text = "Play"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -96,8 +100,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_0t5ke")
-theme_override_font_sizes/font_size = 42
+theme_override_fonts/font = ExtResource("3_vuisw")
+theme_override_font_sizes/font_size = 72
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -116,8 +120,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_0t5ke")
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("3_vuisw")
+theme_override_font_sizes/font_size = 72
 text = "Help"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -136,8 +140,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_0t5ke")
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("3_vuisw")
+theme_override_font_sizes/font_size = 72
 text = "Exit"
 horizontal_alignment = 1
 vertical_alignment = 1

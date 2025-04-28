@@ -16,14 +16,15 @@ var music_volume: float = 100.0
 var sfx_volume: float = 100.0
 var hi_score: int = 0
 
-var music_tween: Tween
-
 func _ready() -> void:
-	get_tree().root.call_deferred("add_child",click_player)
-	get_tree().root.call_deferred("add_child",music_player)
+	# Setup for music player and the button click sound
+	get_tree().root.call_deferred("add_child", click_player)
+	get_tree().root.call_deferred("add_child", music_player)
 
+	# Set the correct bus for the settings to work
 	click_player.bus = "SFX"
 	click_player.stream = click_sound
+
 	music_player.bus = "Music"
 	music_player.stream = menu_theme
 
@@ -43,14 +44,7 @@ func play_menu_theme() -> void:
 	music_player.play()
 
 func stop_menu_theme() -> void:
-	music_tween = get_tree().create_tween()
-	music_tween.tween_property(music_player,"volume_db",linear_to_db(0),1.0)
-	music_tween.tween_callback(
-		func() -> void:
-			music_player.stop()
-			music_player.volume_db = 0.0
-			music_tween.kill()
-	)
+	music_player.stop()
 
 func go_to(scene: String) -> void:
 	var transition: Node = Composer.setup_load_screen(Global.loading_transition)

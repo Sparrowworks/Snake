@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cu1ntiirqsfub" path="res://src/Settings/settings.gd" id="1_jqvh0"]
 [ext_resource type="PackedScene" uid="uid://hojhgp2tlg3b" path="res://src/Background/Background.tscn" id="2_6netp"]
-[ext_resource type="FontFile" uid="uid://brsbkqea30ixk" path="res://assets/fonts/Kenney Bold.ttf" id="3_alh7i"]
+[ext_resource type="FontFile" uid="uid://b7pe7jy61wrbo" path="res://assets/fonts/Lemon Days.ttf" id="3_thnjq"]
 [ext_resource type="Texture2D" uid="uid://bsvwqhjqq87h4" path="res://assets/images/button_rectangle_depth_flat.png" id="4_5o5h4"]
 [ext_resource type="Texture2D" uid="uid://e1mxdr6qd3ac" path="res://assets/images/icon_circle.png" id="4_8lpai"]
 [ext_resource type="Texture2D" uid="uid://n72vfrbd0imh" path="res://assets/images/icon_outline_circle.png" id="5_jxjyi"]
@@ -26,8 +26,8 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 263.0
 grow_horizontal = 2
-theme_override_fonts/font = ExtResource("3_alh7i")
-theme_override_font_sizes/font_size = 112
+theme_override_fonts/font = ExtResource("3_thnjq")
+theme_override_font_sizes/font_size = 192
 text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -39,10 +39,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -256.0
-offset_top = -319.0
-offset_right = 256.0
-offset_bottom = 519.0
+offset_left = -232.5
+offset_top = -263.0
+offset_right = 232.5
+offset_bottom = 163.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 50
@@ -53,9 +53,9 @@ layout_mode = 2
 [node name="MusicLabel" type="Label" parent="ButtonBox/MusicSlider"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_alh7i")
-theme_override_font_sizes/font_size = 36
-text = "Music Volume  100"
+theme_override_fonts/font = ExtResource("3_thnjq")
+theme_override_font_sizes/font_size = 48
+text = "Music Volume:  100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -73,9 +73,9 @@ layout_mode = 2
 [node name="SfxLabel" type="Label" parent="ButtonBox/SfxSlider"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("3_alh7i")
-theme_override_font_sizes/font_size = 36
-text = "SFX Volume  100"
+theme_override_fonts/font = ExtResource("3_thnjq")
+theme_override_font_sizes/font_size = 48
+text = "SFX Volume: 100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -101,33 +101,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_alh7i")
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("3_thnjq")
+theme_override_font_sizes/font_size = 72
 text = "Reset"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HSeparator" type="HSeparator" parent="ButtonBox"]
-self_modulate = Color(1, 1, 1, 0)
+[node name="BackButton" type="TextureButton" parent="."]
 layout_mode = 2
-theme_override_constants/separation = 200
-
-[node name="BackButton" type="TextureButton" parent="ButtonBox"]
-layout_mode = 2
+offset_left = 308.0
+offset_top = 999.0
+offset_right = 692.0
+offset_bottom = 1127.0
 size_flags_horizontal = 4
 texture_normal = ExtResource("4_5o5h4")
 texture_pressed = ExtResource("5_mdo30")
 texture_hover = ExtResource("6_pu453")
 
-[node name="Label" type="Label" parent="ButtonBox/BackButton"]
+[node name="Label" type="Label" parent="BackButton"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("3_alh7i")
-theme_override_font_sizes/font_size = 48
+theme_override_fonts/font = ExtResource("3_thnjq")
+theme_override_font_sizes/font_size = 72
 text = "Back"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -135,4 +134,4 @@ vertical_alignment = 1
 [connection signal="value_changed" from="ButtonBox/MusicSlider/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="ButtonBox/SfxSlider/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="ButtonBox/ResetButton" to="." method="_on_reset_button_pressed"]
-[connection signal="pressed" from="ButtonBox/BackButton" to="." method="_on_back_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
