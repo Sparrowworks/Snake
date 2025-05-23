@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://byq6te8x2cgls"]
+[gd_scene load_steps=14 format=3 uid="uid://byq6te8x2cgls"]
 
 [ext_resource type="Script" uid="uid://xt4r8pvo1y6d" path="res://src/Game/Game.gd" id="1_62xe8"]
 [ext_resource type="Texture2D" uid="uid://224vv4sesa2v" path="res://assets/images/gameBG.png" id="2_vicne"]
@@ -7,8 +7,46 @@
 [ext_resource type="Texture2D" uid="uid://cc6usmrr128jq" path="res://assets/images/BG.png" id="5_4mayo"]
 [ext_resource type="FontFile" uid="uid://b7pe7jy61wrbo" path="res://assets/fonts/Lemon Days.ttf" id="6_vvitb"]
 [ext_resource type="Texture2D" uid="uid://bd8dhh6gsvig3" path="res://assets/images/blueBtnTapped.png" id="7_mdt6g"]
+[ext_resource type="Script" uid="uid://c21o7f1uu5b13" path="res://src/Game/pause_ui.gd" id="8_5ikym"]
 [ext_resource type="AudioStream" uid="uid://bjiamstei38q5" path="res://assets/audio/gameOver.mp3" id="8_m0hqv"]
 [ext_resource type="AudioStream" uid="uid://dg50le446esxw" path="res://assets/audio/gameTheme.mp3" id="9_hehav"]
+
+[sub_resource type="Animation" id="Animation_5ikym"]
+resource_name = "PauseOn"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_itvb1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v2fk1"]
+_data = {
+&"PauseOn": SubResource("Animation_5ikym"),
+&"RESET": SubResource("Animation_itvb1")
+}
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_62xe8")
@@ -35,7 +73,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-metadata/_edit_lock_ = true
 
 [node name="Panel" type="TextureRect" parent="UI/Control"]
 custom_minimum_size = Vector2(0, 200)
@@ -183,6 +220,39 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="PauseUI" type="Control" parent="UI"]
+process_mode = 2
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("8_5ikym")
+
+[node name="Pause" type="Label" parent="UI/PauseUI"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -254.0
+offset_top = -93.5
+offset_right = 254.0
+offset_bottom = 93.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("6_vvitb")
+theme_override_font_sizes/font_size = 144
+text = "PAUSED"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/PauseUI/Pause"]
+libraries = {
+&"": SubResource("AnimationLibrary_v2fk1")
+}
+
 [node name="Audio" type="Node" parent="."]
 
 [node name="GameOver" type="AudioStreamPlayer2D" parent="Audio"]
@@ -195,8 +265,10 @@ unique_name_in_owner = true
 stream = ExtResource("9_hehav")
 bus = &"Music"
 
+[connection signal="game_paused" from="." to="UI/PauseUI" method="_on_game_game_paused"]
 [connection signal="apple_hit" from="Snake" to="Apple" method="_on_snake_apple_hit"]
 [connection signal="game_over" from="Snake" to="." method="_on_snake_game_over"]
 [connection signal="game_over" from="Snake" to="Apple" method="_on_snake_game_over"]
 [connection signal="score_increased" from="Apple" to="." method="_on_apple_score_increased"]
 [connection signal="timeout" from="TimeTimer" to="." method="_on_time_timer_timeout"]
+[connection signal="game_unpaused" from="UI/PauseUI" to="." method="_on_pause_ui_game_unpaused"]

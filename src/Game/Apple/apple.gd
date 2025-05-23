@@ -19,12 +19,12 @@ func is_rotten(cell: Vector2i) -> bool:
 
 func spawn_apple(apple: int) -> void:
 	# Select a random coord first
-	var coord: Vector2i = Vector2i(randi_range(0, Global.MAX_X), randi_range(0, Global.MAX_Y))
+	var coord: Vector2i = Vector2i(randi_range(0, Globals.MAX_X), randi_range(0, Globals.MAX_Y))
 
 	# If the coord is already occupied, then repeat until we select a good coordinate
 	if coord in snake_occupied_cells or coord in get_used_cells():
 		while coord in snake_occupied_cells or coord in get_used_cells():
-			coord = Vector2i(randi_range(0, Global.MAX_X), randi_range(0, Global.MAX_Y))
+			coord = Vector2i(randi_range(0, Globals.MAX_X), randi_range(0, Globals.MAX_Y))
 
 	# 0 means rotten apple
 	if apple == 0:
