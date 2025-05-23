@@ -24,6 +24,7 @@ func _ready() -> void:
 	# Set the correct bus for the settings to work
 	click_player.bus = "SFX"
 	click_player.stream = click_sound
+	click_player.process_mode = Node.PROCESS_MODE_ALWAYS
 
 	music_player.bus = "Music"
 	music_player.stream = menu_theme
@@ -47,7 +48,7 @@ func stop_menu_theme() -> void:
 	music_player.stop()
 
 func go_to(scene: String) -> void:
-	var transition: Node = Composer.setup_load_screen(Global.loading_transition)
+	var transition: Node = Composer.setup_load_screen(Globals.loading_transition)
 	if transition:
 		click_player.play()
 		await transition.finished_fade_in
