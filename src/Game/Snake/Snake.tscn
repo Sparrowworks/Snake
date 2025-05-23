@@ -2,8 +2,8 @@
 
 [ext_resource type="Texture2D" uid="uid://bp4yrx3hhqypm" path="res://assets/images/snake.png" id="1_3hh26"]
 [ext_resource type="Texture2D" uid="uid://c1jdxdgvc8gqj" path="res://assets/images/head.png" id="2_o2fng"]
-[ext_resource type="Script" uid="uid://bdfyg7sn0u2uw" path="res://src/Game/Snake/Snake.gd" id="2_t2gq8"]
 [ext_resource type="Texture2D" uid="uid://cspg1viabgp3l" path="res://assets/images/tail.png" id="3_ynvn1"]
+[ext_resource type="Script" uid="uid://bdfyg7sn0u2uw" path="res://src/Game/Snake/snake.gd" id="4_ynvn1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7o718"]
 texture = ExtResource("1_3hh26")
@@ -46,7 +46,7 @@ sources/2 = SubResource("TileSetAtlasSource_jqn80")
 position = Vector2(0, 200)
 tile_map_data = PackedByteArray(0, 0, 9, 0, 8, 0, 1, 0, 0, 0, 0, 0, 0, 0, 9, 0, 9, 0, 2, 0, 0, 0, 0, 0, 0, 0)
 tile_set = SubResource("TileSet_oq818")
-script = ExtResource("2_t2gq8")
+script = ExtResource("4_ynvn1")
 
 [node name="MoveTimer" type="Timer" parent="."]
 wait_time = 0.85
