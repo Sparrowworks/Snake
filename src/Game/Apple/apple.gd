@@ -11,11 +11,14 @@ var snake_occupied_cells: Array[Vector2i] = []
 var has_rotten: bool = false
 var rotten_apple_coord: Vector2i
 
+
 func is_apple(cell: Vector2i) -> bool:
-	return get_cell_source_id(cell) >= 0 # If the source_id is bigger than 0, this means that cell is not empty and is not a rotten apple
+	return get_cell_source_id(cell) >= 0  # If the source_id is bigger than 0, this means that cell is not empty and is not a rotten apple
+
 
 func is_rotten(cell: Vector2i) -> bool:
-	return get_cell_source_id(cell) == 0 # If the source_id is equal to 0, this means that the cell is a rotten apple
+	return get_cell_source_id(cell) == 0  # If the source_id is equal to 0, this means that the cell is a rotten apple
+
 
 func spawn_apple(apple: int) -> void:
 	# Select a random coord first
@@ -28,23 +31,26 @@ func spawn_apple(apple: int) -> void:
 
 	# 0 means rotten apple
 	if apple == 0:
-		rotten_apple_coord = coord # Save this coordinate, so we can later hide the apple after enough time has passed
+		rotten_apple_coord = coord  # Save this coordinate, so we can later hide the apple after enough time has passed
 
-	set_cell(coord, apple, Vector2i(0,0))
+	set_cell(coord, apple, Vector2i(0, 0))
+
 
 func _on_normal_timer_timeout() -> void:
 	# Every time this timer finishes; we add another apple and shorten the next timer's interval
-	spawn_apple(1) # 1 means normal apple
+	spawn_apple(1)  # 1 means normal apple
 	normal_timer.wait_time = clampi(normal_timer.wait_time - 5, 10, 45)
 
+
 func _on_golden_timer_timeout() -> void:
-	spawn_apple(2) # 2 means golden apple
+	spawn_apple(2)  # 2 means golden apple
+
 
 func _on_rotten_timer_timeout() -> void:
 	# If we already have a rotten apple, then we hide it and pause until the next timeout
 	if has_rotten:
 		has_rotten = false
-		set_cell(rotten_apple_coord) # Clear the cell
+		set_cell(rotten_apple_coord)  # Clear the cell
 	else:
 		# If we don't, then we spawn the rotten apple and let it be for 15s
 		has_rotten = true
@@ -52,6 +58,7 @@ func _on_rotten_timer_timeout() -> void:
 		if rotten_timer.wait_time != 15:
 			rotten_timer.wait_time = 15
 			rotten_timer.start()
+
 
 func _on_snake_apple_hit(coord: Vector2i) -> void:
 	if get_cell_source_id(coord) == 1:
@@ -65,7 +72,8 @@ func _on_snake_apple_hit(coord: Vector2i) -> void:
 		golden_timer.start()
 		$PickupGolden.play()
 
-	set_cell(coord) # Clear the cell
+	set_cell(coord)  # Clear the cell
+
 
 func _on_snake_game_over() -> void:
 	# Stop all timers
