@@ -21,7 +21,6 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: Scony/godot-gdscript-toolkit@master
-    - uses: repo-sync/pull-request@master
 
     - run: sudo apt-get install gh -y
 
