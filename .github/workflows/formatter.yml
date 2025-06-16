@@ -1,9 +1,5 @@
 name: Static checks
 
-permissions:
-  contents: write
-  pull-requests: write
-
 on:
   pull_request:
     branches: [ "main" ]
@@ -16,6 +12,10 @@ on:
 
 jobs:
   static-checks:
+    permissions:
+      contents: write
+      pull-requests: write
+
     name: 'Static checks'
     runs-on: ubuntu-latest
     steps:
