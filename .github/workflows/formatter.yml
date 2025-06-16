@@ -28,27 +28,27 @@ jobs:
       run: |
         if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
           gdformat src/
-    
-          if [[ $(git status --porcelain | grep -v '^\?\?') ]]; then
-            BRANCH_NAME=static/check-$(date +%s)
-    
-            git config user.name "github-actions"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git checkout -b $BRANCH_NAME
-    
-            git commit -am "chore: format GDScript files"
-            git remote set-url origin https://x-access-token:${{ secrets.SYNCER_TOKEN }}@github.com/${{ github.repository }}
-            git push --set-upstream origin $BRANCH_NAME
-    
-            echo "${{ secrets.SYNCER_TOKEN }}" | gh auth login --with-token
-            gh pr create \
-              --title "chore: format GDScript files" \
-              --body "Automatically formatted GDScript files using gdformat." \
-              --base main \
-              --head $BRANCH_NAME
-          else
-            echo "No formatting changes."
-          fi
+
+          if [[ (git status --porcelain]]; then
+              BRANCH_NAME=static/check-$(date +%s)
+
+              git config user.name "github-actions"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git checkout -b $BRANCH_NAME
+
+              git commit -am "chore: format GDScript files"
+              git remote set-url origin https://x-access-token:${{ secrets.SYNCER_TOKEN }}@github.com/${{ github.repository }}
+              git push --set-upstream origin $BRANCH_NAME
+
+              echo "${{ secrets.SYNCER_TOKEN }}" | gh auth login --with-token
+              gh pr create \
+                --title "chore: format GDScript files" \
+                --body "Automatically formatted GDScript files using gdformat." \
+                --base main \
+                --head $BRANCH_NAME
+            else
+              echo "No formatting changes."
+            fi
         else
           gdformat --check src/
         fi
@@ -59,23 +59,24 @@ jobs:
           gdlint src/ || true
           
           if [[ `git status --porcelain` ]]; then
-                git config user.name "github-actions"
-                git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-                git checkout -b $BRANCH_NAME
-          
-                git commit -am "chore: lint GDScript files"
-                git remote set-url origin https://x-access-token:${{ secrets.SYNCER_TOKEN }}@github.com/${{ github.repository }}
-                git push --set-upstream origin $BRANCH_NAME
-          
-                gh auth login --with-token <<< "${{ secrets.SYNCER_TOKEN }}"
-                gh pr create \
-                  --title "chore: lint GDScript files" \
-                  --body "Automatically lints GDScript files using gdformat." \
-                  --base main \
-                  --head $BRANCH_NAME
-              else
-                echo "No formatting changes."
-              fi
+              BRANCH_NAME=static/check-$(date +%s)
+              git config user.name "github-actions"
+              git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+              git checkout -b $BRANCH_NAME
+        
+              git commit -am "chore: lint GDScript files"
+              git remote set-url origin https://x-access-token:${{ secrets.SYNCER_TOKEN }}@github.com/${{ github.repository }}
+              git push --set-upstream origin $BRANCH_NAME
+        
+              gh auth login --with-token <<< "${{ secrets.SYNCER_TOKEN }}"
+              gh pr create \
+                --title "chore: lint GDScript files" \
+                --body "Automatically lints GDScript files using gdformat." \
+                --base main \
+                --head $BRANCH_NAME
+            else
+              echo "No formatting changes."
+            fi
         else
           gdformat --check src/
         fi
