@@ -28,7 +28,8 @@ jobs:
       run: |
         if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
           gdformat src/
-
+          git add -u  # Stage all updated files
+          
           if [[ -n $(git status --porcelain | grep -v '^\?\?') ]]; then
             BRANCH_NAME=static/check-$(date +%s)
 
@@ -56,6 +57,7 @@ jobs:
     - name: Lint code
       run: |
         gdlint src/
+        git add -u  # Stage all updated files
 
         if [[ $(git status --porcelain | grep -v '^\?\?') ]]; then
             BRANCH_NAME=static/check-$(date +%s)
