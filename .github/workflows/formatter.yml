@@ -29,6 +29,7 @@ jobs:
           git push
         else
           echo "No formatting changes."
+        fi
       
     - name: Lint code
       run: |
