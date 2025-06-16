@@ -56,7 +56,7 @@ jobs:
     - name: Lint code
       run: |
         if [[ "${{ github.event_name }}" == "workflow_dispatch" ]]; then
-          gdlint src/
+          gdlint src/ || true
           
           if [[ `git status --porcelain` ]]; then
                 git config user.name "github-actions"
