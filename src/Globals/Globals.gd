@@ -16,6 +16,7 @@ var music_volume: float = 100.0
 var sfx_volume: float = 100.0
 var hi_score: int = 0
 
+
 func _ready() -> void:
 	# Setup for music player and the button click sound
 	get_tree().root.call_deferred("add_child", click_player)
@@ -29,6 +30,7 @@ func _ready() -> void:
 	music_player.bus = "Music"
 	music_player.stream = menu_theme
 
+
 func is_new_high_score(new_score: int) -> bool:
 	if new_score > hi_score:
 		hi_score = new_score
@@ -36,16 +38,20 @@ func is_new_high_score(new_score: int) -> bool:
 
 	return false
 
+
 func play_menu_theme() -> void:
 	if not music_player.is_inside_tree():
 		await music_player.ready
 
-	if music_player.playing: return
+	if music_player.playing:
+		return
 
 	music_player.play()
 
+
 func stop_menu_theme() -> void:
 	music_player.stop()
+
 
 func go_to(scene: String) -> void:
 	var transition: Node = Composer.setup_load_screen(Globals.loading_transition)
