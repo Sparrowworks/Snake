@@ -1,5 +1,9 @@
 name: Static checks
 
+permissions:
+  contents: write
+  pull-requests: write
+
 on:
   pull_request:
     branches: [ "main" ]
@@ -25,6 +29,7 @@ jobs:
         if [[ `git status --porcelain` ]]; then
           git config user.name "github-actions"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git commit -am "chore: format GDScript files"
           git push
         else
@@ -38,6 +43,7 @@ jobs:
         if [[ `git status --porcelain` ]]; then
           git config user.name "github-actions"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git commit -am "chore: Apply lint fixes"
           git push
         else
