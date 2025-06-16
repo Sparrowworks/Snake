@@ -15,10 +15,8 @@ jobs:
     name: 'Static checks'
     runs-on: ubuntu-latest
     steps:
-    - name: Setup
-      uses: |
-        actions/checkout@v4
-        Scony/godot-gdscript-toolkit@master
+    - uses: actions/checkout@v4
+    - uses: Scony/godot-gdscript-toolkit@master
 
     - name: Format code
       run: |
