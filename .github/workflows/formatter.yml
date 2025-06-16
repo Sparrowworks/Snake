@@ -20,7 +20,7 @@ jobs:
 
     - name: Format code
       run: |
-        gdformat --check src/
+        gdformat src/
         
         if [[ `git status --porcelain` ]]; then
           git config user.name "github-actions"
