@@ -15,7 +15,32 @@ jobs:
     name: 'Static checks'
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - uses: Scony/godot-gdscript-toolkit@master
-    - run: gdformat --check src/
-    - run: gdlint src/
+    - name: Setup
+      uses: |
+        actions/checkout@v4
+        Scony/godot-gdscript-toolkit@master
+
+    - name: Format code
+      run: |
+        gdformat --check src/
+        
+        if [[ `git status --porcelain` ]]; then
+          git config user.name "github-actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "chore: format GDScript files"
+          git push
+        else
+          echo "No formatting changes."
+      
+    - name: Lint code
+      run: |
+        gdlint src/
+        
+        if [[ `git status --porcelain` ]]; then
+          git config user.name "github-actions"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "chore: Apply lint fixes"
+          git push
+        else
+          echo "No lint fixes to commit."
+        fi
