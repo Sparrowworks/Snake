@@ -36,10 +36,10 @@ jobs:
               git checkout -b $BRANCH_NAME
         
               git commit -am "chore: format GDScript files"
-              git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+              git remote set-url origin https://x-access-token:${{ secrets.SYNCER_TOKEN }}@github.com/${{ github.repository }}
               git push --set-upstream origin $BRANCH_NAME
         
-              gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
+              gh auth login --with-token <<< "${{ secrets.SYNCER_TOKEN }}"
               gh pr create \
                 --title "chore: format GDScript files" \
                 --body "Automatically formatted GDScript files using gdformat." \
@@ -59,10 +59,10 @@ jobs:
               git checkout -b $BRANCH_NAME
         
               git commit -am "chore: lint GDScript files"
-              git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+              git remote set-url origin https://x-access-token:${{ secrets.SYNCER_TOKEN }}@github.com/${{ github.repository }}
               git push --set-upstream origin $BRANCH_NAME
         
-              gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
+              gh auth login --with-token <<< "${{ secrets.SYNCER_TOKEN }}"
               gh pr create \
                 --title "chore: lint GDScript files" \
                 --body "Automatically lints GDScript files using gdformat." \
