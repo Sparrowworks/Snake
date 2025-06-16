@@ -29,7 +29,7 @@ jobs:
       run: |
         gdformat src/
 
-        if [[ -n $(git status --porcelain ]]; then
+        if [[ -n $(git status --porcelain) ]]; then
           BRANCH_NAME=static/check-$(date +%s)
 
           git config user.name "github-actions"
@@ -54,7 +54,7 @@ jobs:
       run: |
         gdlint src/ || true
 
-        if [[ $(git status --porcelain ]]; then
+        if [[ $(git status --porcelain) ]]; then
             BRANCH_NAME=static/check-$(date +%s)
             git config user.name "github-actions"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
